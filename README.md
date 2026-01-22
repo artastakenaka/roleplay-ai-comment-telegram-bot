@@ -1,4 +1,4 @@
-# Roleplay AI Telegram Bot
+# Roleplay AI Comment Telegram Bot
 
 <p align="center">
   <img src="bot-logo.png" width="350" alt="Roleplay AI Bot Logo">
