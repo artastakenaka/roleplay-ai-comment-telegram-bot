@@ -1,12 +1,10 @@
 # Roleplay AI Telegram Bot
 
 🤖 **@roleplay_ai_bot** — Your smart AI companion for Telegram channels and groups
-
-<p align="center">
-  <img src="bot-logo.png" width="400" alt="Roleplay AI Bot Logo">
-</p>
-
 [Try it now → https://t.me/roleplay_ai_bot](https://t.me/roleplay_ai_bot)
+<p align="center">
+  <img src="bot-logo.png" width="350" alt="Roleplay AI Bot Logo">
+</p>
 
 Roleplay AI Telegram bot: create unique personas that auto-comment posts, reply in custom style & proactively message users. Boost your Telegram channel or group engagement!
 
