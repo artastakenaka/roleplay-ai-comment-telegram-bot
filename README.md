@@ -40,7 +40,7 @@
 
 - Create **unique AI characters** with personality, tone, backstory, slang, humor — anything you want  
 - **Auto-comments** under every new post in your channel or group  
-- **Smart replies** in comment threads — always stays perfectly in character  
+- **Smart replies** to your subscribers — always perfectly in character 
 - **Proactive DMs** to active users (when permissions allow)  
 - Understands **text + images** + full conversation history  
 - Dramatically **boosts** comments, reactions, views and organic growth
