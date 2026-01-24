@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong style="font-size: 1.4em; line-height: 1.6;">
-    Your channel just got a voice.<br>
+    Your community just got a voice.<br>
     Custom AI persona comments, roasts, hypes, trolls — exactly as you want.<br>
     24/7 • Instant engagement boost
   </strong>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>30 channel comments | 100 replies FREE forever</strong><br>
-  <em>Then pay-as-you-go • Start free, no card needed</em>
+  <em>Then pay-as-you-go • Start free now</em>
 </p>
 
 <p align="center">
