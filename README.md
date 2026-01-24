@@ -7,8 +7,8 @@
 <p align="center">
   <strong style="font-size: 1.4em; line-height: 1.6;">
     Your community just got a voice.<br>
-    Custom AI persona comments, roasts, hypes, trolls in your Telegram channel & group — exactly as you want.<br>
-    24/7 • Instant engagement boost
+    Custom AI persona comments, roasts, hypes, trolls in your Telegram channel & group.<br>
+     24/7 • Instant engagement boost
   </strong>
 </p>
 
