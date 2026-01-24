@@ -37,7 +37,7 @@
 ### 🤖 Реальный пример работы бота SKYNET
 
 <p >
-<img src="https://github.com/user-attachments/assets/ac5bb718-9a73-4c30-beb3-9f08f2cc3d72" width="400" />
+<img src="https://github.com/user-attachments/assets/f86cfa9f-675d-4435-b151-59c4bf253850" width="400" />
 </p>
 
 <p>
