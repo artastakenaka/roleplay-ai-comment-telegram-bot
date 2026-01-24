@@ -27,10 +27,22 @@
 </p>
 
 <p align="center">
-  <code>@roleplay_ai_bot</code> • Реальные примеры → <a href="https://t.me/roleplay_ai_channel">@roleplay_ai_channel</a>
+  <em>Бот: <code>@roleplay_ai_bot</code> — нажми кнопку выше и начни прямо сейчас.</em>
 </p>
 
 🇬🇧 [English version → README.md](./README.md)
+
+---
+
+### ✨ Реальный пример работы бота SKYNET
+
+<p >
+<img src="https://github.com/user-attachments/assets/ac5bb718-9a73-4c30-beb3-9f08f2cc3d72" width="400" />
+</p>
+
+<p>
+   Больше примеров  в моей группе → <a href="https://t.me/roleplay_ai_channel">@roleplay_ai_channel</a>
+</p>
 
 ---
 
