@@ -27,12 +27,21 @@
   </a>
 </p>
 
-<p align="center">
-  <code>@roleplay_ai_bot</code> • Real examples → <a href="https://t.me/roleplay_ai_channel">@roleplay_ai_channel</a>
-</p>
 
 🇷🇺 [Russian version → README.ru.md](./README.ru.md)
 
+
+---
+
+### 🤖 Real SKYNET bot reply
+
+<p >
+<img src="https://github.com/user-attachments/assets/342d1761-bec2-4e2b-9c40-ab861992c42a" width="400" />
+</p>
+
+<p>
+   More examples in my group → <a href="https://t.me/roleplay_ai_channel">@roleplay_ai_channel</a>
+</p>
 
 ---
 
