@@ -14,8 +14,7 @@
 
 <p align="center">
   <strong>30 комментариев под постами + 100 ответов БЕСПЛАТНО навсегда</strong><br>
-  <em>Дальше — pay-as-you-go • Старт без карты</em>
-</p>
+  <em>Pay-as-you-go • платишь только за использование
 
 <p align="center">
   <a href="https://t.me/roleplay_ai_bot">
