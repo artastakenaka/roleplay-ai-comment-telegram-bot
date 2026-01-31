@@ -40,7 +40,7 @@
 ### 🤖 Real SKYNET bot reply
 
 <p >
-<img src="https://github.com/user-attachments/assets/342d1761-bec2-4e2b-9c40-ab861992c42a" width="400" />
+<img src="https://github.com/user-attachments/assets/02c542ee-8324-42c5-81fa-74356c6200eb" width="400" />
 </p>
 
 <p>
