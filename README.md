@@ -23,8 +23,8 @@
     <img src="https://img.shields.io/badge/🤖%20LAUNCH%20BOT%20NOW-@roleplay_ai_bot-0088cc?style=for-the-badge&logo=telegram&logoColor=white" alt="Launch Bot">
   </a>
   &nbsp;&nbsp;
-  <a href="https://t.me/roleplay_ai_channel">
-    <img src="https://img.shields.io/badge/🎭%20SEE%20REAL%20EXAMPLES-@roleplay_ai_channel-0088cc?style=for-the-badge&logo=telegram&logoColor=white" alt="See Examples">
+  <a href="https://t.me/cyber_frog_ai">
+    <img src="https://img.shields.io/badge/🎭%20SEE%20REAL%20EXAMPLES-@cyber_frog_ai-0088cc?style=for-the-badge&logo=telegram&logoColor=white" alt="See Examples">
   </a>
 </p>
 
@@ -44,7 +44,7 @@
 </p>
 
 <p>
-   More examples in my group → <a href="https://t.me/roleplay_ai_channel">@roleplay_ai_channel</a>
+   More examples in my group → <a href="https://t.me/cyber_frog_ai">@cyber_frog_ai</a>
 </p>
 
 ---
