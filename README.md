@@ -1,20 +1,21 @@
 <p align="center">
   <img src="bot-logo.png" width="380" alt="Roleplay AI Bot Logo">
   <br><br>
-  <h1>Roleplay AI Telegram bot | Bot for channels & groups </h1>
+  <h1>Roleplay AI Telegram bot | Bot for channel & groups </h1>
 </p>
 
 <p align="center">
   <strong style="font-size: 1.4em; line-height: 1.6;">
     Your community just got a voice.<br>
+    The ultimate <b>bot for Telegram channel</b> and groups admins.<br>
     Custom AI persona comments, roasts, hypes, trolls in your Telegram channel & group.<br>
-     24/7 • Instant engagement boost
+     24/7 • Instant engagement boost • Grok telegram bot
   </strong>
 </p>
 
 <p align="center">
   <strong>30 channel comments | 100 replies FREE forever</strong><br>
-  <em>Then pay-as-you-go • Start free now</em>
+  <em>Then pay-as-you-go • Start free now </em>
 </p>
 
 <p align="center">
@@ -50,13 +51,14 @@
 
 ### ✨ What makes this bot special?
 
-- Create **unique AI characters** with personality, tone, backstory, slang, humor — anything you want  
+- Create **unique AI characters** with personality, tone, backstory and slang 
 - **Auto-comments** under every new post in your channel or group  
-- **Smart replies** to your subscribers — always perfectly in character 
-- **Proactive DMs** to active users (when permissions allow)  
-- Understands **text + images** + full conversation history  
-- Dramatically **boosts** comments, reactions, views and organic growth
-- Powered by **Grok** — advanced AI from xAI for witty, natural, and intelligent interactions
+- **Smart replies** to subscribers — always in character  
+- **Proactive messages** to active users   (when permissions allow)
+- Works in **channels and groups**  
+- Understands **text + images** and conversation context  
+- Dramatically **boosts Telegram engagement** 
+- Powered by **Grok** AI for witty and natural interactions  
 
 ---
 
@@ -165,3 +167,13 @@ Your custom AI persona is now active:
 If something doesn't work — just message @roleplay_ai_bot support. We help fast!
 
 Create epic personas and watch your channel explode with activity! ✨
+
+### 🔎 SEO Keywords
+- bot for telegram channel  
+- bot telegram channel  
+- admin bot telegram  
+- roleplay telegram bot  
+- telegram auto comment bot  
+- telegram engagement bot  
+- ai telegram marketing  
+- telegram automation bot  
