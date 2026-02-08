@@ -32,7 +32,7 @@
   <em>Bot: <code>@roleplay_ai_bot</code> - click the button above and start right now.</em>
 </p>
 
-🌐 **Official website:** [https://grok.cyberfrog.tech](https://roleplay.cyberfrog.tech/)
+🌐 **Official website:** [https://roleplay.cyberfrog.tech](https://roleplay.cyberfrog.tech/)
 <br><br>
 🇷🇺 [Russian version → README.ru.md](./README.ru.md)
 
