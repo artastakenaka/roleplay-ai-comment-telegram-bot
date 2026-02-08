@@ -66,6 +66,7 @@
     a:hover{ text-decoration:underline; }
 
     .wrap{ max-width: 1040px; margin: 0 auto; padding: 48px 18px 70px; }
+
     .topbar{
       display:flex; align-items:center; justify-content:space-between; gap:12px;
       padding: 10px 0 22px;
@@ -75,7 +76,7 @@
     .brand{
       display:flex; align-items:center; gap:12px; min-width: 0;
     }
-    .brand img{ width:40px; height:40px; border-radius:12px; box-shadow: 0 6px 22px rgba(0,0,0,.55); }
+    .brand img{ width:40px; height:40px; border-radius:12px; box-shadow: 0 6px 22px rgba(0,0,0,.55); flex: 0 0 auto; }
     .brand .name{ font-weight:800; letter-spacing:.2px; }
     .brand .tag{ font-size:13px; color:var(--muted2); }
 
@@ -90,6 +91,7 @@
       border:1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.03);
       color: var(--muted);
+      white-space: nowrap;
     }
     .pill strong{ color:#fff; }
 
@@ -176,6 +178,8 @@
       margin-top: 14px;
       color: var(--muted2);
       font-size: 13px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     code{
       background: rgba(255,255,255,.08);
@@ -183,12 +187,16 @@
       border-radius: 8px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       color:#fff;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .mini{
       margin: 14px 0 0;
       color: var(--muted2);
       font-size: 13px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .section{
@@ -245,6 +253,7 @@
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,.10);
       box-shadow: var(--shadow);
+      display:block;
     }
 
     .toc{
@@ -261,6 +270,8 @@
       color: var(--muted2);
       font-size: 13px;
       text-align:center;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .faq details{
@@ -286,6 +297,67 @@
       opacity:.65;
       font-size: 12px;
       margin-top: 16px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    /* ===== Mobile fixes for "top part" ===== */
+    @media (max-width: 720px){
+      .wrap{ padding: 26px 14px 58px; }
+      .topbar{
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 12px;
+        padding: 8px 0 14px;
+        margin-bottom: 18px;
+      }
+      .brand{
+        width: 100%;
+        gap: 10px;
+      }
+      .brand img{ width:34px; height:34px; border-radius: 10px; }
+      .brand .name{ font-size: 16px; }
+      .brand .tag{ font-size: 12px; }
+
+      .lang{
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+      }
+      .lang::-webkit-scrollbar{ display:none; }
+
+      .pill{
+        flex: 0 0 auto;
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+
+      .hero{ margin-top: 16px; gap: 16px; }
+
+      .card{ padding: 18px; }
+      .subtitle{ font-size: 16px; }
+
+      .cta{
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn{
+        width: 100%;
+        min-width: 0;
+      }
+
+      .badges{ gap: 8px; }
+      .badge{ font-size: 12px; padding: 8px 10px; }
+
+      .toc{ gap: 8px; }
+    }
+
+    @media (max-width: 520px){
+      h1{ font-size: 30px; }
     }
   </style>
 
@@ -405,79 +477,79 @@
     <main>
       <!-- HERO -->
       <section class="hero" aria-label="Hero">
-  <div class="card">
-    <h1>Bot for Telegram channels for admins</h1>
+        <div class="card">
+          <h1>Bot for Telegram channels for admins</h1>
 
-    <p class="subtitle">
-      Create a <b>custom AI persona</b> that <b>auto comments</b> under posts and <b>replies</b> to users in groups —
-      always <b>in character</b>.
-    </p>
+          <p class="subtitle">
+            Create a <b>custom AI persona</b> that <b>auto comments</b> under posts and <b>replies</b> to users in groups —
+            always <b>in character</b>.
+          </p>
 
-    <div class="badges" aria-label="Highlights">
-      <div class="badge">⚡ <b>Auto comments</b></div>
-      <div class="badge">💬 <b>Smart replies</b></div>
-      <div class="badge">🎭 <b>Any persona</b></div>
-      <div class="badge">🧩 <b>3–5 min setup</b></div>
-    </div>
+          <div class="badges" aria-label="Highlights">
+            <div class="badge">⚡ <b>Auto comments</b></div>
+            <div class="badge">💬 <b>Smart replies</b></div>
+            <div class="badge">🎭 <b>Any persona</b></div>
+            <div class="badge">🧩 <b>3–5 min setup</b></div>
+          </div>
 
-    <div class="cta" role="group" aria-label="Primary actions">
-      <a class="btn primary" href="https://t.me/roleplay_ai_bot" target="_blank" rel="noopener">
-        ▶ Open @roleplay_ai_bot
-      </a>
-      <a class="btn ghost" href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">
-        👀 See live examples
-      </a>
-    </div>
+          <div class="cta" role="group" aria-label="Primary actions">
+            <a class="btn primary" href="https://t.me/roleplay_ai_bot" target="_blank" rel="noopener">
+              ▶ Open @roleplay_ai_bot
+            </a>
+            <a class="btn ghost" href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">
+              👀 See live examples
+            </a>
+          </div>
 
-    <p class="note">
-      Free forever <b>30 comments</b> + <b>100 replies</b><br/>
-      Bot handle <code>@roleplay_ai_bot</code>
-    </p>
+          <p class="note">
+            Free forever <b>30 comments</b> + <b>100 replies</b><br/>
+            Bot handle <code>@roleplay_ai_bot</code>
+          </p>
 
-    <div class="toc" aria-label="Jump links">
-      <a class="pill" href="#how">Setup</a>
-      <a class="pill" href="#usecases">Use cases</a>
-      <a class="pill" href="#faq">FAQ</a>
-    </div>
-  </div>
+          <div class="toc" aria-label="Jump links">
+            <a class="pill" href="#how">Setup</a>
+            <a class="pill" href="#usecases">Use cases</a>
+            <a class="pill" href="#faq">FAQ</a>
+          </div>
+        </div>
 
-  <aside class="card secondary" aria-label="Social proof and screenshot">
-    <h2 style="margin-bottom:6px;">A bot voice people remember</h2>
-    <p style="margin-top:0;">
-      A consistent persona that jokes, roasts, hypes, argues, or explains —
-      so users keep replying.
-    </p>
+        <aside class="card secondary" aria-label="Social proof and screenshot">
+          <h2 style="margin-bottom:6px;">A bot voice people remember</h2>
+          <p style="margin-top:0;">
+            A consistent persona that jokes, roasts, hypes, argues, or explains —
+            so users keep replying.
+          </p>
 
-    <div class="kpi" aria-label="Reported results">
-      <div class="box">
-        <div class="num">10 → 200</div>
-        <div class="lbl">comments on a post</div>
-      </div>
-      <div class="box">
-        <div class="num">24/7</div>
-        <div class="lbl">in character replies</div>
-      </div>
-      <div class="box">
-        <div class="num">3–5 min</div>
-        <div class="lbl">setup time</div>
-      </div>
-    </div>
+          <div class="kpi" aria-label="Reported results">
+            <div class="box">
+              <div class="num">10 → 200</div>
+              <div class="lbl">comments on a post</div>
+            </div>
+            <div class="box">
+              <div class="num">24/7</div>
+              <div class="lbl">in character replies</div>
+            </div>
+            <div class="box">
+              <div class="num">3–5 min</div>
+              <div class="lbl">setup time</div>
+            </div>
+          </div>
 
-    <div class="hr"></div>
+          <div class="hr"></div>
 
-    <h3 style="margin-top:0;">Reply example</h3>
-    <img
-      src="https://github.com/user-attachments/assets/02c542ee-8324-42c5-81fa-74356c6200eb"
-      class="img"
-      alt="Telegram channel bot reply example with auto comments and replies"
-      loading="lazy"
-    />
-    <p class="mini">
-      Live examples:
-      <a href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">@cyber_frog_ai</a>
-    </p>
-  </aside>
-</section>
+          <h3 style="margin-top:0;">Reply example</h3>
+          <img
+            src="https://github.com/user-attachments/assets/02c542ee-8324-42c5-81fa-74356c6200eb"
+            class="img"
+            alt="Telegram channel bot reply example with auto comments and replies"
+            loading="lazy"
+          />
+          <p class="mini">
+            Live examples:
+            <a href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">@cyber_frog_ai</a>
+          </p>
+        </aside>
+      </section>
 
       <!-- KEYWORD-RICH SECTION -->
       <section id="channel-bot" class="section" aria-label="Telegram channel bot for admins">
@@ -498,264 +570,4 @@
       </section>
 
       <!-- WHAT -->
-      <section id="what" class="section" aria-label="What is it">
-        <div class="card">
-          <h2>What is Roleplay AI Bot?</h2>
-          <p>
-            <b>Roleplay AI Bot</b> is a <b>Telegram engagement bot</b> for admins.
-            You create a custom character prompt (tone, slang, rules, personality),
-            and the bot will:
-          </p>
-          <ul>
-            <li><b>Auto comment</b> under new channel posts (via the discussion group)</li>
-            <li><b>Reply</b> to users in group chats (in character)</li>
-            <li>Keep conversations alive with jokes, takes, debates, hype, or “roasts”</li>
-            <li>Make your community feel like it has a recognizable voice / mascot</li>
-          </ul>
-          <p>
-            This is a new format for Telegram communities: users often don’t even realize it’s a bot —
-            they just see a consistent, funny persona that reacts fast and keeps threads moving.
-          </p>
-        </div>
-      </section>
-
-      <!-- USE CASES -->
-      <section id="usecases" class="section" aria-label="Use cases">
-        <div class="card">
-          <h2>Best use cases (where it goes viral)</h2>
-          <div class="grid2">
-            <div>
-              <h3>Fan pages & character communities</h3>
-              <ul>
-                <li>Make a “main character” that comments like the real persona</li>
-                <li>Inside jokes + consistent lore = users start replying to it</li>
-                <li>Perfect for anime, games, streamers, meme pages</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Admins who want engagement without spam</h3>
-              <ul>
-                <li>Auto comments that start discussions under posts</li>
-                <li>Helpful replies to questions (FAQ-style)</li>
-                <li>More thread depth, more reactions, more returning users</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3>“Hater” / “Roaster” / “Troll” personas</h3>
-              <ul>
-                <li>Savage commentator that triggers funny debates</li>
-                <li>Roasts low-effort takes and boosts replies</li>
-                <li>Easy to control with rules & forbidden topics</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Brand voice & soft promotion</h3>
-              <ul>
-                <li>Playful mascot that mentions your product naturally</li>
-                <li>On-topic comments that feel human, not ads</li>
-                <li>Great for niche communities and startups</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PERSONA IDEAS -->
-      <section id="personas" class="section" aria-label="Persona ideas">
-        <div class="card">
-          <h2>Persona ideas people love</h2>
-          <p>Pick a vibe, write a strong prompt, and your channel becomes unforgettable.</p>
-          <div class="grid2">
-            <ul>
-              <li>🚀 Crypto degen yelling “TO THE MOON”</li>
-              <li>🧓 Angry boomer fighting “modern culture”</li>
-              <li>🪖 “Comrade Major” enforcing order</li>
-              <li>🔥 Roast bot (sarcastic, savage, witty)</li>
-              <li>🧠 Wise mentor (calm, helpful, philosophical)</li>
-            </ul>
-            <ul>
-              <li>🎮 Gamer NPC with lore and quests</li>
-              <li>🧪 Mad scientist explaining everything</li>
-              <li>💞 Flirty “best friend” persona</li>
-              <li>🕵️ Conspiracy uncle with hot takes</li>
-              <li>🧍 The “main character” of your fan page</li>
-            </ul>
-          </div>
-          <p class="mini">
-            Tip: the more specific the prompt (slang, forbidden topics, style rules), the funnier and more consistent the persona.
-          </p>
-        </div>
-      </section>
-
-      <!-- HOW TO -->
-      <section id="how" class="section" aria-label="Setup instructions">
-        <div class="card">
-          <h2>How to set up (3–5 minutes)</h2>
-
-          <h3>Step 1 — Create your persona & personal bot</h3>
-          <ol>
-            <li>Open <code>@roleplay_ai_bot</code> → send <code>/create_bot</code></li>
-            <li>Send your persona prompt (personality, tone, slang, rules)</li>
-            <li>Open <a href="https://t.me/botfather" target="_blank" rel="noopener">@BotFather</a> → create a new bot</li>
-            <li>BotFather → <code>/mybots</code> → your bot → <b>Bot Settings</b>:
-              <ul>
-                <li><b>Allow Groups</b> → ON</li>
-                <li><b>Group Privacy</b> → OFF (required)</li>
-              </ul>
-            </li>
-            <li>Copy API Token → paste it into <code>@roleplay_ai_bot</code></li>
-          </ol>
-
-          <h3>Step 2 — Connect to channel or group</h3>
-
-          <p><b>Option A — Channel (with discussion group)</b></p>
-          <ol>
-            <li>In <code>@roleplay_ai_bot</code> → <code>/add_channel</code></li>
-            <li>Ensure the channel has a linked discussion group</li>
-            <li>Add your bot to the discussion group as a regular member</li>
-            <li>Post a test message in the channel</li>
-            <li>Forward the discussion message to <code>@roleplay_ai_bot</code> to finish linking</li>
-          </ol>
-
-          <p><b>Option B — Standalone group</b></p>
-          <ol>
-            <li>In <code>@roleplay_ai_bot</code> → <code>/add_group</code></li>
-            <li>Add your bot to the group as a regular member</li>
-            <li>Send a test message</li>
-            <li>Forward that message to <code>@roleplay_ai_bot</code> to finish linking</li>
-          </ol>
-
-          <p><b>Done.</b> Your AI persona is now live and ready to comment & reply in character.</p>
-
-          <div class="cta" style="margin-top:18px;">
-            <a class="btn primary" href="https://t.me/roleplay_ai_bot" target="_blank" rel="noopener">▶ Start setup in Telegram</a>
-            <a class="btn ghost" href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">👀 Watch real examples</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- RELATED: GROK -->
-      <section id="grok" class="section" aria-label="Grok Telegram related">
-        <div class="card secondary">
-          <h2>Looking for Grok in Telegram?</h2>
-          <p>
-            If you searched for <b>free grok telegram</b> or <b>uncencored grok telegram</b>:
-            this page is about the <b>channel engagement</b> product (auto comments + persona replies).
-            For a Grok chat bot experience, check the related project:
-            <a href="https://grok.cyberfrog.tech/" target="_blank" rel="noopener">Grok Telegram Bot</a>.
-          </p>
-          <p class="mini">
-            Note: we don’t offer “unsafe/uncensored” modes — personas still follow platform rules and safety constraints.
-          </p>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section id="faq" class="section" aria-label="FAQ">
-        <div class="card faq">
-          <h2>FAQ</h2>
-
-          <details>
-            <summary>Is this a moderation bot?</summary>
-            <div class="a">
-              It’s primarily an <b>engagement bot</b>: auto comments and in-character replies.
-              You can design “strict” personas (rules, warnings, tone), but the core value is conversation + retention.
-            </div>
-          </details>
-
-          <details>
-            <summary>Is this a bot for Telegram channel admins?</summary>
-            <div class="a">
-              Yes. Roleplay AI Bot is made for admins: it’s a <b>bot for telegram channel</b> engagement that auto-comments under posts (via the linked discussion group),
-              plus it replies in groups in the same persona voice.
-            </div>
-          </details>
-
-          <details>
-            <summary>Does it work as an auto comments Telegram bot?</summary>
-            <div class="a">
-              Yes — it can generate <b>auto comments</b> under new posts (discussion threads) and keep the thread active with in-character replies.
-              Think of it as <b>auto comments telegram bot</b> + <b>comment telegram bot</b> replies combined.
-            </div>
-          </details>
-
-          <details>
-            <summary>I searched “bot telegram channel”. What makes this different?</summary>
-            <div class="a">
-              Most bots are utilities (moderation, stats, posting). This one is an <b>admin bot telegram</b> communities use to add a recognizable “voice”:
-              a persona that jokes, debates, roasts, explains, and keeps users replying.
-            </div>
-          </details>
-
-          <details>
-            <summary>Will it work in my Telegram channel?</summary>
-            <div class="a">
-              Yes — channels work through the <b>linked discussion group</b>. The bot comments in the discussion thread under posts.
-            </div>
-          </details>
-
-          <details>
-            <summary>Can I create any persona (friend, hater, mascot, celebrity-like)?</summary>
-            <div class="a">
-              You can create any fictional or custom persona you want by writing a prompt: voice, slang, rules, humor level,
-              “never do” lists, and style constraints.
-            </div>
-          </details>
-
-          <details>
-            <summary>How fast can I try it?</summary>
-            <div class="a">
-              Usually <b>3–5 minutes</b>. Open <code>@roleplay_ai_bot</code>, run <code>/create_bot</code>, connect a BotFather token,
-              then attach it to your group/channel.
-            </div>
-          </details>
-
-          <details>
-            <summary>Is there a free tier?</summary>
-            <div class="a">
-              Yes: <b>30 channel comments</b> + <b>100 replies</b> free forever. After that, it’s pay-as-you-go.
-            </div>
-          </details>
-
-          <details>
-            <summary>Is it affiliated with Telegram or xAI?</summary>
-            <div class="a">
-              No. This is an independent project and is not affiliated with Telegram, xAI, Elon Musk, or Pavel Durov.
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <!-- FINAL CTA -->
-      <section class="section" aria-label="Final call to action">
-        <div class="card secondary">
-          <h2>Try it on your next post</h2>
-          <p>
-            The easiest way to understand it: add a persona, make one post, and watch the thread start talking back.
-            If your community is niche, a perfect character prompt can make your channel instantly recognizable.
-          </p>
-          <div class="cta">
-            <a class="btn primary" href="https://t.me/roleplay_ai_bot" target="_blank" rel="noopener">▶ Open @roleplay_ai_bot</a>
-            <a class="btn ghost" href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">👀 See examples</a>
-          </div>
-          <p class="disclaimer">
-            Independent project. Not affiliated with xAI, Telegram, Elon Musk, or Pavel Durov.
-          </p>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <div>
-          <a href="./privacy.html">Privacy Policy</a>
-          &nbsp;·&nbsp;
-          <a href="./terms.html">Terms of Service</a>
-        </div>
-        <div style="margin-top:10px;">
-          Keywords: bot for telegram channel · bot telegram channel · admin bot telegram · telegram bot for admins · auto comments telegram bot · comment telegram bot · telegram channel bot · telegram group bot · auto replies telegram · persona bot
-        </div>
-      </footer>
-    </main>
-  </div>
-</body>
-</html>
+      <section id="what" class="section"
