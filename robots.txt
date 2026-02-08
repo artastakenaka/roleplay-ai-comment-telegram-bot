@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://roleplay.cyberfrog.tech/sitemap.xml
