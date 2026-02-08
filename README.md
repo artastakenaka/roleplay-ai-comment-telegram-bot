@@ -14,11 +14,6 @@
 </p>
 
 <p align="center">
-
-🌐 **Official website:** [https://grok.cyberfrog.tech](https://roleplay.cyberfrog.tech/)
-</p>
-
-<p align="center">
   <strong>30 channel comments | 100 replies FREE forever</strong><br>
   <em>Then pay-as-you-go • Start free now </em>
 </p>
@@ -37,6 +32,7 @@
   <em>Bot: <code>@roleplay_ai_bot</code> - click the button above and start right now.</em>
 </p>
 
+🌐 **Official website:** [https://grok.cyberfrog.tech](https://roleplay.cyberfrog.tech/)
 🇷🇺 [Russian version → README.ru.md](./README.ru.md)
 
 
