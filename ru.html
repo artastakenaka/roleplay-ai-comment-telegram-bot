@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b0b0b" />
+
+  <!-- Primary SEO -->
+  <title>Roleplay AI Bot | Бот для админов Telegram-каналов</title>
+  <meta
+    name="description"
+    content="Бот для админов Telegram: создайте AI-персону, которая автоматически комментирует посты и отвечает пользователям в группах — строго в образе. Увеличивает вовлечённость!"
+  />
+  <meta
+    name="keywords"
+    content="бот для телеграм канала, бот телеграм канал, бот для админов телеграм, админ бот телеграм, телеграм бот для админов, автокомментарии телеграм бот, бот комментариев телеграм, бот для телеграм канала комментарии, бот для телеграм группы, бот для вовлечённости телеграм, автоответы телеграм бот, persona bot telegram, roleplay bot telegram, telegram engagement bot, auto comments telegram bot, comment telegram bot"
+  />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://roleplay.cyberfrog.tech/" />
+
+  <!-- Language / alternates (adjust URLs if needed) -->
+  <link rel="alternate" hreflang="en" href="https://roleplay.cyberfrog.tech/" />
+  <link rel="alternate" hreflang="ru" href="https://ru.html" />
+  <link rel="alternate" hreflang="x-default" href="https://roleplay.cyberfrog.tech/" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="bot-logo.png" />
+  <link rel="apple-touch-icon" href="bot-logo.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Roleplay AI Bot — бот для админов Telegram-каналов (автокомменты + ответы)" />
+  <meta property="og:description" content="Бот для Telegram-каналов и групп: своя AI-персона, которая автоматически комментирует посты и отвечает пользователям — в образе. Есть бесплатный тариф." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://roleplay.cyberfrog.tech/" />
+  <meta property="og:image" content="https://roleplay.cyberfrog.tech/bot-logo.png" />
+  <meta property="og:image:alt" content="Roleplay AI Bot — бот для админов Telegram-каналов" />
+  <meta property="og:site_name" content="Roleplay AI Bot" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Roleplay AI Bot — бот для админов Telegram-каналов" />
+  <meta name="twitter:description" content="Автокомментарии + умные ответы в Telegram-каналах и группах на основе вашей AI-персоны. Есть бесплатный тариф." />
+  <meta name="twitter:image" content="https://roleplay.cyberfrog.tech/bot-logo.png" />
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://t.me" crossorigin />
+  <link rel="dns-prefetch" href="https://t.me" />
+  <link rel="preconnect" href="https://github.com" crossorigin />
+  <link rel="dns-prefetch" href="https://github.com" />
+
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --panel:#0d1a14;
+      --panel2:#0f141a;
+      --border:#1a3c2e;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.78);
+      --muted2:rgba(255,255,255,.62);
+      --accent:#00e676;
+      --accent2:#0088cc;
+      --shadow: 0 10px 40px rgba(0,0,0,.6);
+      --radius:18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji"; line-height:1.6; }
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width: 1040px; margin: 0 auto; padding: 48px 18px 70px; }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding: 10px 0 22px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      margin-bottom: 26px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 0;
+    }
+    .brand img{ width:40px; height:40px; border-radius:12px; box-shadow: 0 6px 22px rgba(0,0,0,.55); flex: 0 0 auto; }
+    .brand .name{ font-weight:800; letter-spacing:.2px; }
+    .brand .tag{ font-size:13px; color:var(--muted2); }
+
+    .lang{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+      font-size: 13px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .pill strong{ color:#fff; }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(0,230,118,.08), rgba(0,0,0,0)) , var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+    .card.secondary{
+      background: linear-gradient(180deg, rgba(0,136,204,.10), rgba(0,0,0,0)) , var(--panel2);
+      border-color: rgba(0,136,204,.25);
+    }
+
+    h1{ margin:0 0 10px; font-size: 44px; line-height:1.1; letter-spacing:.2px; }
+    @media (max-width: 520px){ h1{ font-size: 34px; } }
+
+    .subtitle{
+      margin:0 0 16px;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 70ch;
+    }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 18px 0 20px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .badge b{ color:#fff; }
+
+    .cta{
+      display:flex; flex-wrap:wrap; gap:12px; margin-top: 16px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 800;
+      letter-spacing:.2px;
+      font-size: 16px;
+      border: 1px solid transparent;
+      text-decoration:none;
+      min-width: 220px;
+    }
+    .btn.primary{
+      background: var(--accent2);
+      color:#fff;
+      box-shadow: 0 10px 30px rgba(0,136,204,.35);
+    }
+    .btn.ghost{
+      background: rgba(255,255,255,.04);
+      border-color: rgba(255,255,255,.14);
+      color:#fff;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+
+    .note{
+      margin-top: 14px;
+      color: var(--muted2);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    code{
+      background: rgba(255,255,255,.08);
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color:#fff;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .mini{
+      margin: 14px 0 0;
+      color: var(--muted2);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .section{
+      margin-top: 26px;
+      display:grid;
+      gap: 16px;
+    }
+
+    h2{ margin: 0 0 10px; font-size: 24px; line-height:1.2; }
+    h3{ margin: 18px 0 10px; font-size: 18px; line-height:1.25; }
+    p{ margin: 10px 0; color: var(--muted); }
+
+    ul,ol{ margin: 10px 0; padding-left: 1.2rem; color: var(--muted); }
+    li{ margin: 6px 0; }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 850px){
+      .grid2{ grid-template-columns: 1fr; }
+    }
+
+    .kpi{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 700px){
+      .kpi{ grid-template-columns: 1fr; }
+    }
+    .kpi .box{
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+    .kpi .num{
+      font-size: 24px;
+      font-weight: 900;
+      color:#fff;
+      margin-bottom: 2px;
+    }
+    .kpi .lbl{
+      font-size: 13px;
+      color: var(--muted2);
+    }
+
+    .img{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      display:block;
+    }
+
+    .toc{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top: 12px;
+    }
+
+    .hr{ height:1px; background: rgba(255,255,255,.10); margin: 26px 0; }
+
+    .footer{
+      margin-top: 38px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: var(--muted2);
+      font-size: 13px;
+      text-align:center;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .faq details{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      border-radius: 16px;
+      padding: 14px 14px;
+      margin: 10px 0;
+    }
+    .faq summary{
+      cursor:pointer;
+      font-weight: 800;
+      color:#fff;
+      list-style:none;
+    }
+    .faq summary::-webkit-details-marker{ display:none; }
+    .faq .a{
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .disclaimer{
+      opacity:.65;
+      font-size: 12px;
+      margin-top: 16px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    /* =========================
+       MOBILE FIXES (TOP + HERO)
+       ========================= */
+    @media (max-width: 720px){
+      .wrap{ padding: 26px 14px 60px; }
+
+      .topbar{
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 12px;
+        padding: 8px 0 14px;
+        margin-bottom: 18px;
+      }
+
+      .brand{ width: 100%; gap: 10px; }
+      .brand img{ width:34px; height:34px; border-radius:10px; }
+      .brand .name{ font-size:16px; }
+      .brand .tag{ font-size:12px; }
+
+      .lang{
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+      }
+      .lang::-webkit-scrollbar{ display:none; }
+      .pill{ flex: 0 0 auto; padding: 7px 10px; font-size: 12px; }
+
+      .hero{ margin-top: 16px; gap: 16px; }
+      .card{ padding: 18px; }
+
+      .subtitle{ font-size: 16px; }
+
+      .cta{ flex-direction: column; align-items: stretch; }
+      .btn{ width: 100%; min-width: 0; }
+
+      .badges{ gap: 8px; }
+      .badge{ font-size: 12px; padding: 8px 10px; }
+
+      .toc{ gap: 8px; }
+    }
+
+    @media (max-width: 420px){
+      h1{ font-size: 30px; }
+    }
+  </style>
+
+  <!-- Structured data: Website + SoftwareApplication + HowTo + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"WebSite",
+        "name":"Roleplay AI Bot",
+        "url":"https://roleplay.cyberfrog.tech/",
+        "inLanguage":"ru",
+        "description":"Бот для админов Telegram-каналов и групп: создайте свою AI-персону, которая автоматически комментирует посты и отвечает пользователям — в образе."
+      },
+      {
+        "@type":"SoftwareApplication",
+        "name":"Roleplay AI Bot",
+        "alternateName":[
+          "бот для телеграм канала",
+          "бот телеграм канал",
+          "бот для админов телеграм",
+          "телеграм бот для админов",
+          "автокомментарии телеграм бот",
+          "бот комментариев телеграм"
+        ],
+        "keywords":"бот для телеграм канала, бот телеграм канал, бот для админов телеграм, телеграм бот для админов, автокомментарии телеграм бот, бот комментариев телеграм, бот для канала телеграм, бот для вовлечённости телеграм, auto comments telegram bot, comment telegram bot, telegram engagement bot",
+        "applicationCategory":"CommunicationApplication",
+        "operatingSystem":"Telegram",
+        "url":"https://roleplay.cyberfrog.tech/",
+        "sameAs":[
+          "https://t.me/roleplay_ai_bot",
+          "https://t.me/cyber_frog_ai"
+        ],
+        "description":"Бот для админов Telegram-каналов и групп: создайте свою AI-персону, которая автоматически комментирует посты и отвечает пользователям — строго в образе.",
+        "offers":[
+          {
+            "@type":"Offer",
+            "name":"Бесплатный тариф",
+            "price":"0",
+            "priceCurrency":"USD",
+            "description":"Навсегда бесплатно: 30 комментариев в канале + 100 ответов."
+          }
+        ]
+      },
+      {
+        "@type":"HowTo",
+        "name":"Как настроить Telegram-бота для автокомментариев и ответов (3–5 минут)",
+        "description":"Создайте бота через BotFather, подключите его к Roleplay AI Bot и привяжите к вашему каналу/группе.",
+        "step":[
+          {"@type":"HowToStep","name":"Откройте Roleplay AI Bot","text":"Откройте @roleplay_ai_bot и запустите /create_bot."},
+          {"@type":"HowToStep","name":"Создайте бота в BotFather","text":"Создайте нового бота в @BotFather и скопируйте API-токен."},
+          {"@type":"HowToStep","name":"Настройте параметры бота","text":"Включите Allow Groups и отключите Group Privacy (обязательно)."},
+          {"@type":"HowToStep","name":"Вставьте токен в Roleplay AI Bot","text":"Отправьте токен в @roleplay_ai_bot, чтобы подключить вашего бота."},
+          {"@type":"HowToStep","name":"Привяжите к каналу/группе","text":"Используйте /add_channel или /add_group, добавьте бота, затем перешлите тестовое сообщение, чтобы завершить настройку."}
+        ]
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"Что такое Roleplay AI Bot?",
+            "acceptedAnswer":{"@type":"Answer","text":"Roleplay AI Bot — это бот для админов Telegram-каналов и групп, который позволяет создать AI-персону. Она автоматически комментирует посты и отвечает пользователям — строго в заданном образе."}
+          },
+          {
+            "@type":"Question",
+            "name":"Это бот именно для админов Telegram-каналов?",
+            "acceptedAnswer":{"@type":"Answer","text":"Да. Он создан для админов: бот комментирует посты (через привязанную группу обсуждений) и отвечает в группах голосом одной и той же персоны."}
+          },
+          {
+            "@type":"Question",
+            "name":"Он работает в Telegram-каналах?",
+            "acceptedAnswer":{"@type":"Answer","text":"Да. Комментарии под постами публикуются через привязанную к каналу группу обсуждений (и также бот может работать в обычных группах)."}
+          },
+          {
+            "@type":"Question",
+            "name":"Это бот для автокомментариев в Telegram?",
+            "acceptedAnswer":{"@type":"Answer","text":"Да — он может автоматически писать комментарии под новыми постами (в тредах обсуждений) и поддерживать активность ответами в образе."}
+          },
+          {
+            "@type":"Question",
+            "name":"Есть бесплатный тариф?",
+            "acceptedAnswer":{"@type":"Answer","text":"Да — навсегда бесплатно: 30 комментариев в канале и 100 ответов (дальше — pay-as-you-go)."}
+          },
+          {
+            "@type":"Question",
+            "name":"Можно сделать любого персонажа (друг, хейтер, маскот)?",
+            "acceptedAnswer":{"@type":"Answer","text":"Да. Вы задаёте промпт персонажа: тон, сленг, бэкстори, правила и стиль — от доброго друга до жёсткого «роастера»."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <img src="./bot-logo.png" alt="Логотип Roleplay AI Bot" width="40" height="40" loading="eager" />
+        <div style="min-width:0;">
+          <div class="name">Roleplay AI Bot</div>
+          <div class="tag">Бот для админов Telegram-каналов — автокомменты и ответы</div>
+        </div>
+      </div>
+
+      <nav class="lang" aria-label="Переключатель языка">
+        <a class="pill" href="https://roleplay.cyberfrog.tech/" aria-current="page"><strong>EN</strong></a>
+        <a class="pill" href="./README.ru.html">RU</a>
+        <a class="pill" href="#how">Настройка</a>
+        <a class="pill" href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" aria-label="Hero">
+        <div class="card">
+          <h1>Бот для Telegram-каналов — для админов</h1>
+
+          <p class="subtitle">
+            Создайте <b>свою AI-персону</b>, которая <b>автоматически комментирует</b> посты и <b>отвечает</b> пользователям в группах —
+            всегда <b>в образе</b>.
+          </p>
+
+          <div class="badges" aria-label="Highlights">
+            <div class="badge">⚡ <b>Автокомментарии</b></div>
+            <div class="badge">💬 <b>Умные ответы</b></div>
+            <div class="badge">🎭 <b>Любая персона</b></div>
+            <div class="badge">🧩 <b>Настройка 3–5 мин</b></div>
+          </div>
+
+          <div class="cta" role="group" aria-label="Primary actions">
+            <a class="btn primary" href="https://t.me/roleplay_ai_bot" target="_blank" rel="noopener">
+              ▶ Открыть @roleplay_ai_bot
+            </a>
+            <a class="btn ghost" href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">
+              👀 Посмотреть живые примеры
+            </a>
+          </div>
+
+          <p class="note">
+            Навсегда бесплатно: <b>30 комментариев</b> + <b>100 ответов</b><br/>
+            Юзернейм бота: <code>@roleplay_ai_bot</code>
+          </p>
+
+          <div class="toc" aria-label="Jump links">
+            <a class="pill" href="#how">Настройка</a>
+            <a class="pill" href="#usecases">Сценарии</a>
+            <a class="pill" href="#faq">FAQ</a>
+          </div>
+        </div>
+
+        <aside class="card secondary" aria-label="Social proof and screenshot">
+          <h2 style="margin-bottom:6px;">Голос бота, который запоминают</h2>
+          <p style="margin-top:0;">
+            Одна и та же персона шутит, «роастит», поддерживает, спорит или объясняет —
+            и пользователи продолжают отвечать.
+          </p>
+
+          <div class="kpi" aria-label="Reported results">
+            <div class="box">
+              <div class="num">10 → 200</div>
+              <div class="lbl">комментариев под постом</div>
+            </div>
+            <div class="box">
+              <div class="num">24/7</div>
+              <div class="lbl">ответы «в образе»</div>
+            </div>
+            <div class="box">
+              <div class="num">3–5 мин</div>
+              <div class="lbl">время настройки</div>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <h3 style="margin-top:0;">Пример ответа</h3>
+          <img
+            src="https://github.com/user-attachments/assets/02c542ee-8324-42c5-81fa-74356c6200eb"
+            class="img"
+            alt="Пример ответа бота в Telegram: автокомментарии и ответы"
+            loading="lazy"
+          />
+          <p class="mini">
+            Живые примеры:
+            <a href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">@cyber_frog_ai</a>
+          </p>
+        </aside>
+      </section>
+
+      <!-- KEYWORD-RICH SECTION -->
+      <section id="channel-bot" class="section" aria-label="Telegram channel bot for admins">
+        <div class="card">
+          <h2>Бот для Telegram-канала для админов (автокомменты + ответы)</h2>
+          <p>
+            Roleplay AI Bot — это решение для владельцев каналов и админов сообществ, которым нужны комментарии и активность без ручной рутины.
+            Он работает как «голос канала»: публикует <b>автокомментарии</b> в привязанной группе обсуждений и отвечает в группах —
+            всё в едином стиле выбранного персонажа.
+          </p>
+          <ul>
+            <li><b>Бот для Telegram-канала</b> → комментарии под постами через группу обсуждений</li>
+            <li><b>Рост вовлечённости</b> → запускает треды и поддерживает диалог</li>
+            <li><b>Бот для админов</b> → промпт персоны + правила + запретные темы</li>
+            <li><b>Автокомментарии</b> + <b>ответы в группах</b> → одна настройка</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- WHAT -->
+      <section id="what" class="section" aria-label="What is it">
+        <div class="card">
+          <h2>Что такое Roleplay AI Bot?</h2>
+          <p>
+            <b>Roleplay AI Bot</b> — это бот для вовлечённости в Telegram для админов.
+            Вы задаёте персонажа (тон, сленг, правила, характер),
+            и бот будет:
+          </p>
+          <ul>
+            <li><b>Автоматически комментировать</b> новые посты в канале (через группу обсуждений)</li>
+            <li><b>Отвечать</b> пользователям в групповых чатах (в образе)</li>
+            <li>Поддерживать активность шутками, мнениями, спорами, «роастом» или полезными объяснениями</li>
+            <li>Делать канал узнаваемым за счёт стабильного «голоса» / маскота</li>
+          </ul>
+          <p>
+            Это новый формат для Telegram-сообществ: часто люди даже не понимают, что это бот —
+            они просто видят персонажа, который быстро реагирует и держит тред живым.
+          </p>
+        </div>
+      </section>
+
+      <!-- USE CASES -->
+      <section id="usecases" class="section" aria-label="Use cases">
+        <div class="card">
+          <h2>Лучшие сценарии (где это реально «залетает»)</h2>
+          <div class="grid2">
+            <div>
+              <h3>Фан-страницы и комьюнити персонажей</h3>
+              <ul>
+                <li>Сделайте «главного героя», который комментирует как оригинальный персонаж</li>
+                <li>Внутренние шутки + лор = пользователи начинают отвечать ему</li>
+                <li>Идеально для аниме, игр, стримеров, мем-страниц</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Админам, которым нужна активность без спама</h3>
+              <ul>
+                <li>Автокомментарии, которые запускают обсуждение</li>
+                <li>Полезные ответы на вопросы (в стиле FAQ)</li>
+                <li>Больше глубины тредов, больше реакций, больше возвратов</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>Персона «хейтер» / «роастер» / «тролль»</h3>
+              <ul>
+                <li>Язвительный комментатор, который провоцирует смешные обсуждения</li>
+                <li>Роастит слабые тейки и повышает число ответов</li>
+                <li>Легко контролировать правилами и стоп-темами</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Бренд-голос и мягкая промо-подача</h3>
+              <ul>
+                <li>Маскот, который упоминает продукт естественно</li>
+                <li>Комментарии по теме — выглядят «по-человечески», а не как реклама</li>
+                <li>Отлично для нишевых сообществ и стартапов</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PERSONA IDEAS -->
+      <section id="personas" class="section" aria-label="Persona ideas">
+        <div class="card">
+          <h2>Идеи персонажей, которые людям заходят</h2>
+          <p>Выберите вайб, напишите сильный промпт — и канал станет запоминающимся.</p>
+          <div class="grid2">
+            <ul>
+              <li>🚀 Крипто-деген с «TO THE MOON»</li>
+              <li>🧓 Вечный ворчун, который «не одобряет современность»</li>
+              <li>🪖 «Товарищ майор» — порядок и дисциплина</li>
+              <li>🔥 Роастер (саркастичный, жёсткий, остроумный)</li>
+              <li>🧠 Мудрый наставник (спокойный, полезный, философский)</li>
+            </ul>
+            <ul>
+              <li>🎮 NPC-геймер с лором и «квестами»</li>
+              <li>🧪 Безумный учёный, который объясняет всё</li>
+              <li>💞 «Лучший друг» с флиртом и поддержкой</li>
+              <li>🕵️ Конспиролог-дядя с горячими тейками</li>
+              <li>🧍 «Главный герой» вашей фан-страницы</li>
+            </ul>
+          </div>
+          <p class="mini">
+            Совет: чем конкретнее промпт (сленг, список запретов, правила стиля), тем смешнее и стабильнее получается персона.
+          </p>
+        </div>
+      </section>
+
+      <!-- HOW TO -->
+      <section id="how" class="section" aria-label="Setup instructions">
+        <div class="card">
+          <h2>Как настроить (3–5 минут)</h2>
+
+          <h3>Шаг 1 — Создайте персону и своего бота</h3>
+          <ol>
+            <li>Откройте <code>@roleplay_ai_bot</code> → отправьте <code>/create_bot</code></li>
+            <li>Отправьте промпт персонажа (характер, тон, сленг, правила)</li>
+            <li>Откройте <a href="https://t.me/botfather" target="_blank" rel="noopener">@BotFather</a> → создайте нового бота</li>
+            <li>BotFather → <code>/mybots</code> → ваш бот → <b>Bot Settings</b>:
+              <ul>
+                <li><b>Allow Groups</b> → ON</li>
+                <li><b>Group Privacy</b> → OFF (обязательно)</li>
+              </ul>
+            </li>
+            <li>Скопируйте API Token → вставьте его в <code>@roleplay_ai_bot</code></li>
+          </ol>
+
+          <h3>Шаг 2 — Подключите к каналу или группе</h3>
+
+          <p><b>Вариант A — Канал (с группой обсуждений)</b></p>
+          <ol>
+            <li>В <code>@roleplay_ai_bot</code> → <code>/add_channel</code></li>
+            <li>Убедитесь, что у канала есть привязанная группа обсуждений</li>
+            <li>Добавьте вашего бота в группу обсуждений как обычного участника</li>
+            <li>Сделайте тестовый пост в канале</li>
+            <li>Перешлите сообщение из обсуждения в <code>@roleplay_ai_bot</code>, чтобы завершить привязку</li>
+          </ol>
+
+          <p><b>Вариант B — Обычная группа</b></p>
+          <ol>
+            <li>В <code>@roleplay_ai_bot</code> → <code>/add_group</code></li>
+            <li>Добавьте вашего бота в группу как обычного участника</li>
+            <li>Отправьте тестовое сообщение</li>
+            <li>Перешлите это сообщение в <code>@roleplay_ai_bot</code>, чтобы завершить привязку</li>
+          </ol>
+
+          <p><b>Готово.</b> Ваша AI-персона теперь «в эфире» и готова комментировать и отвечать в образе.</p>
+
+          <div class="cta" style="margin-top:18px;">
+            <a class="btn primary" href="https://t.me/roleplay_ai_bot" target="_blank" rel="noopener">▶ Начать настройку в Telegram</a>
+            <a class="btn ghost" href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">👀 Посмотреть реальные примеры</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RELATED: GROK -->
+      <section id="grok" class="section" aria-label="Grok Telegram related">
+        <div class="card secondary">
+          <h2>Ищете Grok в Telegram?</h2>
+          <p>
+            Если вы искали <b>free grok telegram</b> или <b>uncencored grok telegram</b>:
+            эта страница про продукт для <b>вовлечённости каналов</b> (автокомментарии + ответы персонажем).
+            Для обычного чат-бота Grok смотрите связанный проект:
+            <a href="https://grok.cyberfrog.tech/" target="_blank" rel="noopener">Grok Telegram Bot</a>.
+          </p>
+          <p class="mini">
+            Примечание: у нас нет «unsafe/uncensored» режимов — персонажи всё равно соблюдают правила платформы и базовые ограничения безопасности.
+          </p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section" aria-label="FAQ">
+        <div class="card faq">
+          <h2>FAQ</h2>
+
+          <details>
+            <summary>Это бот-модератор?</summary>
+            <div class="a">
+              Это в первую очередь <b>бот для вовлечённости</b>: автокомментарии и ответы «в образе».
+              Можно сделать «строгую» персону (правила, предупреждения, тон), но главная ценность — разговор и удержание аудитории.
+            </div>
+          </details>
+
+          <details>
+            <summary>Это бот именно для админов Telegram-каналов?</summary>
+            <div class="a">
+              Да. Roleplay AI Bot сделан для админов: это бот, который комментирует посты (через привязанную группу обсуждений)
+              и отвечает в группах голосом одной и той же персоны.
+            </div>
+          </details>
+
+          <details>
+            <summary>Он правда умеет автокомментарии в Telegram?</summary>
+            <div class="a">
+              Да — он может генерировать <b>автокомментарии</b> под новыми постами (в тредах обсуждений) и поддерживать активность ответами «в образе».
+              По сути это автокомменты + ответы в одном решении.
+            </div>
+          </details>
+
+          <details>
+            <summary>Я искал «бот телеграм канал». Чем вы отличаетесь?</summary>
+            <div class="a">
+              Большинство ботов — утилиты (модерация, статистика, постинг). Этот бот добавляет каналу узнаваемый «голос»:
+              персонажа, который шутит, спорит, «роастит», объясняет и заставляет людей отвечать.
+            </div>
+          </details>
+
+          <details>
+            <summary>Это будет работать в моём Telegram-канале?</summary>
+            <div class="a">
+              Да — каналы работают через <b>привязанную группу обсуждений</b>. Бот пишет комментарии в обсуждениях под постами.
+            </div>
+          </details>
+
+          <details>
+            <summary>Можно сделать любую персону (друг, хейтер, маскот)?</summary>
+            <div class="a">
+              Да. Вы можете создать любую выдуманную или авторскую персону через промпт: голос, сленг, правила, юмор,
+              списки «нельзя» и ограничения стиля.
+            </div>
+          </details>
+
+          <details>
+            <summary>Как быстро можно попробовать?</summary>
+            <div class="a">
+              Обычно <b>3–5 минут</b>. Откройте <code>@roleplay_ai_bot</code>, запустите <code>/create_bot</code>, подключите токен BotFather
+              и привяжите бота к группе/каналу.
+            </div>
+          </details>
+
+          <details>
+            <summary>Есть бесплатный тариф?</summary>
+            <div class="a">
+              Да: <b>30 комментариев в канале</b> + <b>100 ответов</b> — навсегда бесплатно. Дальше — pay-as-you-go.
+            </div>
+          </details>
+
+          <details>
+            <summary>Это связано с Telegram или xAI?</summary>
+            <div class="a">
+              Нет. Это независимый проект и он не связан с Telegram, xAI, Илоном Маском или Павлом Дуровым.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="section" aria-label="Final call to action">
+        <div class="card secondary">
+          <h2>Попробуйте на следующем посте</h2>
+          <p>
+            Самый быстрый способ понять: добавьте персону, сделайте один пост — и посмотрите, как тред начинает «разговаривать».
+            Если у вас нишевое комьюнити, удачный промпт персонажа сделает канал мгновенно узнаваемым.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="https://t.me/roleplay_ai_bot" target="_blank" rel="noopener">▶ Открыть @roleplay_ai_bot</a>
+            <a class="btn ghost" href="https://t.me/cyber_frog_ai" target="_blank" rel="noopener">👀 Посмотреть примеры</a>
+          </div>
+          <p class="disclaimer">
+            Независимый проект. Не связан с xAI, Telegram, Илоном Маском или Павлом Дуровым.
+          </p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>
+          <a href="./privacy.html">Политика конфиденциальности</a>
+          &nbsp;·&nbsp;
+          <a href="./terms.html">Условия использования</a>
+        </div>
+        <div style="margin-top:10px;">
+          Ключевые слова: бот для телеграм канала · бот телеграм канал · бот для админов телеграм · телеграм бот для админов · автокомментарии телеграм бот · бот комментариев телеграм · бот для телеграм группы · автоответы телеграм · persona bot
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
